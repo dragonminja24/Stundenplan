@@ -5,7 +5,7 @@ import './MainList.css';
 
 const content = props => (
   <ul className='liststyle'>
-  <li className='element'>Raum</li>
+  <li className='element'>HALLO</li>
   </ul>
 );
 
