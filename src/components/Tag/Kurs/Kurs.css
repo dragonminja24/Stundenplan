@@ -1,0 +1,15 @@
+.eintrag {
+  text-align: center;
+  border: 1px solid grey;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 20.5vh;
+}
+
+.titel {
+  font-size: calc(10px + 3vmin);
+}
+
+.info {
+  font-size: calc(10px + 2vmin);
+}
