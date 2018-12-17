@@ -5,22 +5,15 @@ import Backdrop from "./components/Backdrop/Backdrop";
 import SideDrawer from "./components/SideDrawer/SideDrawer";
 import Content from "./components/MainList/MainList";
 import Drawer from "./components/SideDrawer/Drawer";
-import Firebase from "./components/Firebase/Firebase";
 import Tag from "./components/Tag/Tag";
 import FooterNavigation from './components/FooterNavigation/FooterNavigation';
 
 class App extends Component {
   state = {
     sideDrawerOpen: false,
-    dbData: []
+    studiengang: "Informatik",
+    semester: "Semester-1"
   };
-
-  componentWillMount() {
-    let messagesRef = Firebase.database().ref("Lehrveranstaltung");
-    messagesRef.once("value", snapshot => {
-      this.setState({ dbData: snapshot.val() });
-    });
-  }
 
   drawerToggleClickHandler = () => {
     this.setState(prevState => {
@@ -46,11 +39,11 @@ class App extends Component {
           {/*<Content />*/}
           
           <Route exact path="/" component={Content} />
-          <Route exact path="/MO" render={() => <Tag data={this.state.dbData} />} />
-          <Route exact path="/DI" render={() => <Tag data={this.state.dbData} />} />
-          <Route exact path="/MI" render={() => <Tag data={this.state.dbData} />} />
-          <Route exact path="/DO" render={() => <Tag data={this.state.dbData} />} />
-          <Route exact path="/FR" render={() => <Tag data={this.state.dbData} />} />
+          <Route exact path="/MO" render={() => <Tag studiengang={this.state.studiengang} semester={this.state.semester} tag="Montag" />} />
+          <Route exact path="/DI" render={() => <Tag studiengang={this.state.studiengang} semester={this.state.semester} tag="Dienstag" />} />
+          <Route exact path="/MI" render={() => <Tag studiengang={this.state.studiengang} semester={this.state.semester} tag="Mittwoch" />} />
+          <Route exact path="/DO" render={() => <Tag studiengang={this.state.studiengang} semester={this.state.semester} tag="Donnerstag" />} />
+          <Route exact path="/FR" render={() => <Tag studiengang={this.state.studiengang} semester={this.state.semester} tag="Freitag" />} />
 
           <FooterNavigation />
           <Drawer drawerClickHandler={this.drawerToggleClickHandler} />

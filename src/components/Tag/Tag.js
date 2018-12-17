@@ -1,14 +1,33 @@
 import React, { Component } from "react";
-import Kurs from './Kurs/Kurs';
-import './Tag.css'
+import Kurs from "./Kurs/Kurs";
+import "./Tag.css";
+import Firebase from "../Firebase/Firebase";
 
 class Tag extends Component {
-  render() {
-    const Kurse = this.props.data.map(wert => {
-      return <Kurs titel={wert.Titel} dozent={wert.Dozent} />;
-    });
+  state = {
+    dbData: null
+  }
 
+  componentWillMount() {
+    let messagesRef = Firebase.database().ref(
+      this.props.studiengang+"/"+this.props.semester+"/"+this.props.tag
+    );
+    messagesRef.once("value", snapshot => {
+      this.setState({ dbData: snapshot.val() });
+    });
+  }
+  render() {
+    var data = this.state.dbData;
+    if (data != null)
+    {
+      console.log(data);
+      const Kurse = Object.keys(data).map(function(key, index) {
+      var current = data[key];
+      return <Kurs titel={current.Titel} dozent={current.Dozent} />;
+    });
     return <div className="main">{Kurse}</div>;
+  }
+  return <div className="main"></div>
   }
 }
 
