@@ -6,11 +6,16 @@ import Firebase from "../Firebase/Firebase";
 class Tag extends Component {
   state = {
     dbData: null
-  }
+  };
 
   componentWillMount() {
     let messagesRef = Firebase.database().ref(
-      this.props.studiengang+"/"+this.props.semester+"/"+this.props.tag
+      "Studiengaenge/" +
+        this.props.studiengang +
+        "/" +
+        this.props.semester +
+        "/" +
+        this.props.tag
     );
     messagesRef.once("value", snapshot => {
       this.setState({ dbData: snapshot.val() });
@@ -18,16 +23,15 @@ class Tag extends Component {
   }
   render() {
     var data = this.state.dbData;
-    if (data != null)
-    {
+    if (data != null) {
       console.log(data);
       const Kurse = Object.keys(data).map(function(key, index) {
-      var current = data[key];
-      return <Kurs titel={current.Titel} dozent={current.Dozent} />;
-    });
-    return <div className="main">{Kurse}</div>;
-  }
-  return <div className="main"></div>
+        var current = data[key];
+        return <Kurs titel={current.Titel} dozent={current.Dozent} />;
+      });
+      return <div className="main">{Kurse}</div>;
+    }
+    return <div className="main" />;
   }
 }
 
