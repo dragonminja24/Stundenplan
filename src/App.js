@@ -25,6 +25,24 @@ class App extends Component {
     this.setState({ sideDrawerOpen: false });
   };
 
+    dayRouter(){
+      var d = new Date();
+      const day = d.getDay(); // the method getDay will return a number of the current day 0 = sunday , 1 = monday
+    let autoPath ='/';
+    switch(day){
+      case 0:{ autoPath = '/MO'; break;}
+      case 1:{ autoPath = '/MO'; break;}
+      case 2:{ autoPath = '/DI'; break;}
+      case 3:{ autoPath = '/MI'; break;}
+      case 4:{ autoPath = '/DO'; break;}
+      case 5:{ autoPath = '/FR'; break;}
+      case 6:{ autoPath = '/MO'; break;}
+    }
+
+    return "http://localhost:3000"+autoPath; //making the absolute path of current day for landing page
+    
+  }
+
   render() {
     let sideDrawer;
     let backdrop;
@@ -32,19 +50,16 @@ class App extends Component {
     if (this.state.sideDrawerOpen) {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
-
+    const redirect = this.dayRouter(); // getting the current day
     return (
       <BrowserRouter>
+      
         <div style={{ height: "100%" }}>
           <Route
             exact
-            path="/"
+            path = "/"
             render={() => (
-              <Tag
-                studiengang={this.state.studiengang}
-                semester={this.state.semester}
-                tag="Montag"
-              />
+              window.location = redirect // redirect from landing page to the current day page
             )}
           />
           <Route
