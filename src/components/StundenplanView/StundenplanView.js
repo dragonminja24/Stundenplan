@@ -35,7 +35,12 @@ class StundenplanView extends Component {
   render() {
     return (
       <div>
-        <Redirect to={this.dayRouter()} />
+        <Route
+          exact
+          path="/"
+          render={() => <Redirect to={this.dayRouter()} />}
+        />
+
         <Route
           exact
           path="/MO"
