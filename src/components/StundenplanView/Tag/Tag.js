@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Kurs from "./Kurs/Kurs";
 import "./Tag.css";
-import Firebase from "../Firebase/Firebase";
+import Firebase from '../../Firebase/Firebase';
 
 class Tag extends Component {
   state = {
@@ -27,7 +27,7 @@ class Tag extends Component {
       console.log(data);
       const Kurse = Object.keys(data).map(function(key, index) {
         var current = data[key];
-        return <Kurs titel={current.Titel} dozent={current.Dozent} />;
+        return <Kurs info={current} />;
       });
       return <div className="main">{Kurse}</div>;
     }
