@@ -9,6 +9,7 @@ import StundenplanView from "./components/StundenplanView/StundenplanView";
 class App extends Component {
   state = {
     sideDrawerOpen: false,
+    width: window.innerWidth,
     studiengang: "Bachelor Informatik",
     semester: "Semester-3"
   };
@@ -24,21 +25,24 @@ class App extends Component {
   };
 
   render() {
+   
     let backdrop;
-
     if (this.state.sideDrawerOpen) {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
-
+    
     return (
       <BrowserRouter>
         <div style={{ height: "100%" }}>
+         
           <StundenplanView data={this.state} />
+       
           <FooterNavigation />
-          <Drawer show={this.state.sideDrawerOpen} drawerClickHandler={this.drawerToggleClickHandler} />
-          <SideDrawer show={this.state.sideDrawerOpen} />
+          drawer = <Drawer show={this.state.sideDrawerOpen} drawerClickHandler={this.drawerToggleClickHandler} />
+          sideDrawer = <SideDrawer show={this.state.sideDrawerOpen} />
           {backdrop}
         </div>
+       
       </BrowserRouter>
     );
   }

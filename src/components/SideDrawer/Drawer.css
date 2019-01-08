@@ -31,3 +31,13 @@
   right:75%;
   transition: ease-out 0.4s;
 }
+
+.navigator-desktop{
+  visibility: hidden;
+}
+
+@media (min-width: 768px){
+  .navigator{
+    display: none;
+  }
+}
