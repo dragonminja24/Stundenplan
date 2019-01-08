@@ -35,7 +35,7 @@ class App extends Component {
         <div style={{ height: "100%" }}>
           <StundenplanView data={this.state} />
           <FooterNavigation />
-          <Drawer drawerClickHandler={this.drawerToggleClickHandler} />
+          <Drawer show={this.state.sideDrawerOpen} drawerClickHandler={this.drawerToggleClickHandler} />
           <SideDrawer show={this.state.sideDrawerOpen} />
           {backdrop}
         </div>
