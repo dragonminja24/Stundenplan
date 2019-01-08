@@ -4,12 +4,11 @@ import './Drawer.css';
 
 const drawer = props => {
 
-
   let drawerClasses = 'navigator';
+    if(props.show) {
+      drawerClasses = 'navigator-open';
+    }
  
-  if(props.show) {
-    drawerClasses = 'navigator-open';
-  }
 
   return(
   <div className={drawerClasses}>
