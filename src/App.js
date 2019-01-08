@@ -12,7 +12,8 @@ class App extends Component {
     sideDrawerOpen: false,
     width: window.innerWidth,
     studiengang: "Bachelor Informatik",
-    semester: "Semester-3"
+    semester: "Semester-3",
+    gruppe: "4"
   };
 
   drawerToggleClickHandler = () => {
@@ -33,7 +34,7 @@ class App extends Component {
     }
     
     return (
-      <BrowserRouter>
+      <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
         <div style={{ height: "100%" }}>
           <WeekHeader />
           <StundenplanView data={this.state} />

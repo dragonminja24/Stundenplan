@@ -9,8 +9,6 @@ class Kurs extends Component {
         <p className="info">Dozent: {this.props.info.Dozent}</p>
         <p className="info">Zeitraum: {this.props.info.Beginn} - {this.props.info.Ende}</p>
         <p className="info">Raum: {this.props.info.Raum}</p>
-        <p className="info">Gruppe: {this.props.info.Gruppe}</p>
-        <p className="info">Woche: {this.props.info.Woche}</p>
       </div>
     );
   }

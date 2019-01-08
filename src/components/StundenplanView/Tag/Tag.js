@@ -7,6 +7,7 @@ class Tag extends Component {
   state = {
     studiengang: this.props.studiengang,
     semester: this.props.semester,
+    gruppe: this.props.gruppe,
     tag: this.props.tag,
     dbData: null
   };
@@ -36,18 +37,25 @@ class Tag extends Component {
       });
     }
   }
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     var woche = this.props.match.params.woche === "gKW" ? 2 : 1;
-    console.log(this.props.match.params.woche);
-    console.log(woche);
+    var gruppe = this.state.gruppe;
     var data = this.state.dbData;
     if (data != null) {
       const Kurse = Object.keys(data).map(function(key, index) {
         var current = data[key];
-        if (current.Woche === 0 || woche === current.Woche) {
-          return <Kurs info={current} key={key} />;
-        } else {
+        if (
+          (current.Woche !== 0 && woche !== current.Woche) ||
+          (current.Gruppe !== 0 && gruppe !== current.Gruppe)
+        ) {
           return null;
+        } else {
+          return <Kurs info={current} key={key} />;
         }
       });
       return <div className="main">{Kurse}</div>;

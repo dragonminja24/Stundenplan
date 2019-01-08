@@ -59,6 +59,7 @@ class StundenplanView extends Component {
               {...props}
               studiengang={this.props.data.studiengang}
               semester={this.props.data.semester}
+              gruppe={this.props.data.gruppe}
               tag="Montag"
             />
           )}
@@ -70,6 +71,7 @@ class StundenplanView extends Component {
               {...props}
               studiengang={this.props.data.studiengang}
               semester={this.props.data.semester}
+              gruppe={this.props.data.gruppe}
               tag="Dienstag"
             />
           )}
@@ -81,6 +83,7 @@ class StundenplanView extends Component {
               {...props}
               studiengang={this.props.data.studiengang}
               semester={this.props.data.semester}
+              gruppe={this.props.data.gruppe}
               tag="Mittwoch"
             />
           )}
@@ -92,6 +95,7 @@ class StundenplanView extends Component {
               {...props}
               studiengang={this.props.data.studiengang}
               semester={this.props.data.semester}
+              gruppe={this.props.data.gruppe}
               tag="Donnerstag"
             />
           )}
@@ -103,6 +107,7 @@ class StundenplanView extends Component {
               {...props}
               studiengang={this.props.data.studiengang}
               semester={this.props.data.semester}
+              gruppe={this.props.data.gruppe}
               tag="Freitag"
             />
           )}
