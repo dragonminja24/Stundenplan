@@ -6,7 +6,7 @@ class FooterNavigation extends Component {
   render() {
     return (
       <footer className="App-footer">
-        <div className="App-footer">
+        <div className="App-footer-two">
           <Link className="tag" to="/MO">
             MO
           </Link>
