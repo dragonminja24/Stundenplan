@@ -5,6 +5,7 @@ import SideDrawer from "./components/SideDrawer/SideDrawer";
 import Drawer from "./components/SideDrawer/Drawer";
 import FooterNavigation from "./components/FooterNavigation/FooterNavigation";
 import StundenplanView from "./components/StundenplanView/StundenplanView";
+import WeekHeader from "./components/WeekHeader/WeekHeader";
 
 class App extends Component {
   state = {
@@ -33,6 +34,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div style={{ height: "100%" }}>
+          <WeekHeader />
           <StundenplanView data={this.state} />
           <FooterNavigation />
           <Drawer show={this.state.sideDrawerOpen} drawerClickHandler={this.drawerToggleClickHandler} />

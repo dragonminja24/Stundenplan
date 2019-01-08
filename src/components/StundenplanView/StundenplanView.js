@@ -3,29 +3,41 @@ import { Route, Redirect } from "react-router-dom";
 import Tag from "./Tag/Tag";
 
 class StundenplanView extends Component {
+  calcWeek() {
+    var d = new Date();
+    var onejan = new Date(d.getFullYear(), 0, 1);
+    var millisecsInDay = 86400000;
+    var weekNumber = Math.ceil(
+      ((d - onejan) / millisecsInDay + onejan.getDay() + 1) / 7
+    );
+    if (d.getDay() === 6) return weekNumber % 2 !== 0 ? "gKW" : "uKW";
+    else return weekNumber % 2 === 0 ? "gKW" : "uKW";
+  }
+
   dayRouter() {
+    var week = this.calcWeek();
     var d = new Date();
     const day = d.getDay(); //number of the current day 0 = sunday , 1 = monday, etc
     let autoPath = "/";
     switch (day) {
       case 2: {
-        autoPath = "/DI";
+        autoPath = "/DI/" + week;
         break;
       }
       case 3: {
-        autoPath = "/MI";
+        autoPath = "/MI/" + week;
         break;
       }
       case 4: {
-        autoPath = "/DO";
+        autoPath = "/DO/" + week;
         break;
       }
       case 5: {
-        autoPath = "/FR";
+        autoPath = "/FR/" + week;
         break;
       }
       default: {
-        autoPath = "/MO";
+        autoPath = "/MO/" + week;
         break;
       }
     }
@@ -40,12 +52,11 @@ class StundenplanView extends Component {
           path="/"
           render={() => <Redirect to={this.dayRouter()} />}
         />
-
         <Route
-          exact
-          path="/MO"
-          render={() => (
+          path="/MO/:woche(gKW|uKW)"
+          render={props => (
             <Tag
+              {...props}
               studiengang={this.props.data.studiengang}
               semester={this.props.data.semester}
               tag="Montag"
@@ -53,10 +64,10 @@ class StundenplanView extends Component {
           )}
         />
         <Route
-          exact
-          path="/DI"
-          render={() => (
+          path="/DI/:woche(gKW|uKW)"
+          render={props => (
             <Tag
+              {...props}
               studiengang={this.props.data.studiengang}
               semester={this.props.data.semester}
               tag="Dienstag"
@@ -64,10 +75,10 @@ class StundenplanView extends Component {
           )}
         />
         <Route
-          exact
-          path="/MI"
-          render={() => (
+          path="/MI/:woche(gKW|uKW)"
+          render={props => (
             <Tag
+              {...props}
               studiengang={this.props.data.studiengang}
               semester={this.props.data.semester}
               tag="Mittwoch"
@@ -75,10 +86,10 @@ class StundenplanView extends Component {
           )}
         />
         <Route
-          exact
-          path="/DO"
-          render={() => (
+          path="/DO/:woche(gKW|uKW)"
+          render={props => (
             <Tag
+              {...props}
               studiengang={this.props.data.studiengang}
               semester={this.props.data.semester}
               tag="Donnerstag"
@@ -86,10 +97,10 @@ class StundenplanView extends Component {
           )}
         />
         <Route
-          exact
-          path="/FR"
-          render={() => (
+          path="/FR/:woche(gKW|uKW)"
+          render={props => (
             <Tag
+              {...props}
               studiengang={this.props.data.studiengang}
               semester={this.props.data.semester}
               tag="Freitag"
