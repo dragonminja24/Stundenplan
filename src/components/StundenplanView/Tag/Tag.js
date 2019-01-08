@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Tag.css";
 import Firebase from "../../Firebase/Firebase";
-import Kurs from '../Kurs/Kurs';
+import Kurs from "../Kurs/Kurs";
 
 class Tag extends Component {
   state = {
@@ -29,18 +29,26 @@ class Tag extends Component {
           this.props.tag
       );
       messagesRef.once("value", snapshot => {
-        console.log("finished");
         this.setState({ dbData: snapshot.val() });
-        localStorage.setItem(this.props.tag, JSON.stringify(this.state));
+        if (this.state.dbData != null) {
+          localStorage.setItem(this.props.tag, JSON.stringify(this.state));
+        }
       });
     }
   }
   render() {
+    var woche = this.props.match.params.woche === "gKW" ? 2 : 1;
+    console.log(this.props.match.params.woche);
+    console.log(woche);
     var data = this.state.dbData;
     if (data != null) {
       const Kurse = Object.keys(data).map(function(key, index) {
         var current = data[key];
-        return <Kurs info={current} key={key} />;
+        if (current.Woche === 0 || woche === current.Woche) {
+          return <Kurs info={current} key={key} />;
+        } else {
+          return null;
+        }
       });
       return <div className="main">{Kurse}</div>;
     }
