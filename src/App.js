@@ -40,11 +40,10 @@ class App extends Component {
           <StundenplanView data={this.state} />
        
           <FooterNavigation />
-          drawer = <Drawer show={this.state.sideDrawerOpen} drawerClickHandler={this.drawerToggleClickHandler} />
-          sideDrawer = <SideDrawer show={this.state.sideDrawerOpen} />
+         <Drawer show={this.state.sideDrawerOpen} drawerClickHandler={this.drawerToggleClickHandler} />
+         <SideDrawer show={this.state.sideDrawerOpen} />
           {backdrop}
         </div>
-       
       </BrowserRouter>
     );
   }

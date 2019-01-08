@@ -8,6 +8,16 @@
   height: 10vh;
 }
 
+.App-footer-two{
+  width: 100%;
+  background: #eee;
+  display: flex;
+  position: sticky;
+  bottom: 0rem;
+  align-self: flex-end;
+  height: 10vh;
+}
+
 .tag {
   text-align: center;
   display: flex;
@@ -20,6 +30,13 @@
   border: 1px solid grey;
   box-sizing: border-box;
   margin: auto;
-  width: 20%;
+  width: 100%;
   height: 100%;
+}
+
+
+@media (min-width: 768px){
+  .App-footer{
+   width: 50%;
+  }
 }

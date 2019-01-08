@@ -1,25 +1,25 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './FooterNavigation.css'
 
 class FooterNavigation extends Component {
   render() {
     return (
       <footer className="App-footer">
-        <div className="App-footer">
-          <Link className="tag" to={"/MO"+this.props.location.pathname.substr(3,4)}>
+        <div className="App-footer-two">
+          <Link className="tag" to="/MO">
             MO
           </Link>
-          <Link className="tag" to={"/DI"+this.props.location.pathname.substr(3,4)}>
+          <Link className="tag" to="/DI">
             DI
           </Link>
-          <Link className="tag" to={"/MI"+this.props.location.pathname.substr(3,4)}>
+          <Link className="tag" to="/MI">
             MI
           </Link>
-          <Link className="tag" to={"/DO"+this.props.location.pathname.substr(3,4)}>
+          <Link className="tag" to="/DO">
             DO
           </Link>
-          <Link className="tag" to={"/FR"+this.props.location.pathname.substr(3,4)}>
+          <Link className="tag" to="/FR">
             FR
           </Link>
         </div>
@@ -28,4 +28,4 @@ class FooterNavigation extends Component {
   }
 }
 
-export default withRouter(FooterNavigation);
+export default FooterNavigation;
