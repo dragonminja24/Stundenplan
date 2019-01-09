@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, withRouter } from "react-router-dom";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Tag from "./Tag/Tag";
+import './StundenplanView.css'
 
 class StundenplanView extends Component {
   calcWeek() {
@@ -45,76 +47,87 @@ class StundenplanView extends Component {
   }
 
   render() {
+    console.log(this.props.location.key);
     return (
       <div>
-        <Route
-          exact
-          path="/"
-          render={() => <Redirect to={this.dayRouter()} />}
-        />
-        <Route
-          path="/MO/:woche(gKW|uKW)"
-          render={props => (
-            <Tag
-              {...props}
-              studiengang={this.props.data.studiengang}
-              semester={this.props.data.semester}
-              gruppe={this.props.data.gruppe}
-              tag="Montag"
+        <TransitionGroup>
+          <CSSTransition
+            key={this.props.location.key}
+            timeout={{ enter: 300, exit: 300 }}
+            classNames={'fade'}
+          >
+          <div>
+            <Route
+              exact
+              path="/"
+              render={() => <Redirect to={this.dayRouter()} />}
             />
-          )}
-        />
-        <Route
-          path="/DI/:woche(gKW|uKW)"
-          render={props => (
-            <Tag
-              {...props}
-              studiengang={this.props.data.studiengang}
-              semester={this.props.data.semester}
-              gruppe={this.props.data.gruppe}
-              tag="Dienstag"
+            <Route
+              path="/MO/:woche(gKW|uKW)"
+              render={props => (
+                <Tag
+                  {...props}
+                  studiengang={this.props.data.studiengang}
+                  semester={this.props.data.semester}
+                  gruppe={this.props.data.gruppe}
+                  tag="Montag"
+                />
+              )}
             />
-          )}
-        />
-        <Route
-          path="/MI/:woche(gKW|uKW)"
-          render={props => (
-            <Tag
-              {...props}
-              studiengang={this.props.data.studiengang}
-              semester={this.props.data.semester}
-              gruppe={this.props.data.gruppe}
-              tag="Mittwoch"
+            <Route
+              path="/DI/:woche(gKW|uKW)"
+              render={props => (
+                <Tag
+                  {...props}
+                  studiengang={this.props.data.studiengang}
+                  semester={this.props.data.semester}
+                  gruppe={this.props.data.gruppe}
+                  tag="Dienstag"
+                />
+              )}
             />
-          )}
-        />
-        <Route
-          path="/DO/:woche(gKW|uKW)"
-          render={props => (
-            <Tag
-              {...props}
-              studiengang={this.props.data.studiengang}
-              semester={this.props.data.semester}
-              gruppe={this.props.data.gruppe}
-              tag="Donnerstag"
+            <Route
+              path="/MI/:woche(gKW|uKW)"
+              render={props => (
+                <Tag
+                  {...props}
+                  studiengang={this.props.data.studiengang}
+                  semester={this.props.data.semester}
+                  gruppe={this.props.data.gruppe}
+                  tag="Mittwoch"
+                />
+              )}
             />
-          )}
-        />
-        <Route
-          path="/FR/:woche(gKW|uKW)"
-          render={props => (
-            <Tag
-              {...props}
-              studiengang={this.props.data.studiengang}
-              semester={this.props.data.semester}
-              gruppe={this.props.data.gruppe}
-              tag="Freitag"
+            <Route
+              path="/DO/:woche(gKW|uKW)"
+              render={props => (
+                <Tag
+                  {...props}
+                  studiengang={this.props.data.studiengang}
+                  semester={this.props.data.semester}
+                  gruppe={this.props.data.gruppe}
+                  tag="Donnerstag"
+                />
+              )}
             />
-          )}
-        />
+            <Route
+              path="/FR/:woche(gKW|uKW)"
+              render={props => (
+                <Tag
+                  {...props}
+                  studiengang={this.props.data.studiengang}
+                  semester={this.props.data.semester}
+                  gruppe={this.props.data.gruppe}
+                  tag="Freitag"
+                />
+              )}
+            />
+            </div>
+          </CSSTransition>
+        </TransitionGroup>
       </div>
     );
   }
 }
 
-export default StundenplanView;
+export default withRouter(StundenplanView);
