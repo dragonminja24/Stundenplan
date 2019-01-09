@@ -29,8 +29,8 @@ class App extends Component {
     });
   };
 
-  changeStudiengang = () => {
-    //this.setState({ studiengang : this.tmp});
+  changeStudiengang = (props) => {
+    this.setState({ studiengang : props});
   };
 
   backdropClickHandler = () => {
@@ -52,7 +52,7 @@ class App extends Component {
        
           <FooterNavigation />
          <Drawer show={this.state.sideDrawerOpen} drawerClickHandler={this.drawerToggleClickHandler} />
-         <SideDrawer data={this.state} changeStudiengang={this.changeStudiengang.bind(this)} contentClickHandler={this.sideDrawerContentHandler} />
+         <SideDrawer data={this.state} changeStudiengang={this.changeStudiengang} contentClickHandler={this.sideDrawerContentHandler} />
           {backdrop}
         </div>
       </BrowserRouter>

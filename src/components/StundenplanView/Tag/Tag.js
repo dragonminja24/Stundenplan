@@ -35,9 +35,9 @@ class Tag extends Component {
       );
       messagesRef.once("value", snapshot => {
         this.setState({ dbData: snapshot.val() });
+        this.setState({ loading: false });
         if (this.state.dbData != null) {
           localStorage.setItem(this.props.tag, JSON.stringify(this.state));
-          this.setState({ loading: false });
         }
       });
     }
