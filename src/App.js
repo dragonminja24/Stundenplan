@@ -9,6 +9,7 @@ import WeekHeader from "./components/WeekHeader/WeekHeader";
 
 class App extends Component {
   state = {
+    showContent : false,
     sideDrawerOpen: false,
     width: window.innerWidth,
     studiengang: "Bachelor Informatik",
@@ -20,6 +21,16 @@ class App extends Component {
     this.setState(prevState => {
       return { sideDrawerOpen: !prevState.sideDrawerOpen };
     });
+  };
+  
+  sideDrawerContentHandler = () => {
+    this.setState(prevState => {
+      return { showContent: !prevState.showContent };
+    });
+  };
+
+  changeStudiengang = () => {
+    //this.setState({ studiengang : this.tmp});
   };
 
   backdropClickHandler = () => {
@@ -41,7 +52,7 @@ class App extends Component {
        
           <FooterNavigation />
          <Drawer show={this.state.sideDrawerOpen} drawerClickHandler={this.drawerToggleClickHandler} />
-         <SideDrawer show={this.state.sideDrawerOpen} />
+         <SideDrawer data={this.state} changeStudiengang={this.changeStudiengang.bind(this)} contentClickHandler={this.sideDrawerContentHandler} />
           {backdrop}
         </div>
       </BrowserRouter>
