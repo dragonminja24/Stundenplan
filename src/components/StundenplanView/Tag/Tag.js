@@ -15,6 +15,7 @@ class Tag extends Component {
 
   componentWillMount() {
     this.setState({ loading: true });
+   
     var saved = JSON.parse(localStorage.getItem(this.props.tag));
     if (
       saved != null &&
