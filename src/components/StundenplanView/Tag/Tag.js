@@ -37,8 +37,6 @@ class Tag extends Component {
         if (this.state.dbData != null) {
           localStorage.setItem(this.props.tag, JSON.stringify(this.state));
           this.setState({ loading: false });
-        } else {
-          //render error
         }
       });
     }
