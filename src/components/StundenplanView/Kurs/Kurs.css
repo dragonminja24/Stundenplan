@@ -3,13 +3,44 @@
   border: 1px solid grey;
   box-sizing: border-box;
   width: 100%;
-  min-height: 20.5vh;
+  min-height: 15vh;
+
+  overflow: auto;
+  position: relative;
+
 }
 
 .titel {
-  font-size: calc(10px + 3vmin);
+  font-size: calc(10px + 1.4vmin);
 }
 
-.info {
-  font-size: calc(10px + 2vmin);
+.infos {
+  font-size: calc(10px + 1vmin);
+  padding-bottom: 10px;
+}
+
+.time {
+  font-size: calc(10px + 2.5vmin);
+}
+
+.left {
+  position: absolute;
+  border-right: 1px solid black;
+  width: 15%;
+  min-height: 100%;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.right{
+  position: absolute;
+  left: 15%;
+  width: 85%;
+  min-height: 100%;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }

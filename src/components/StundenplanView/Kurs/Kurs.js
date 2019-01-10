@@ -1,14 +1,22 @@
 import React, { Component } from "react";
-import './Kurs.css'
+import "./Kurs.css";
 
 class Kurs extends Component {
   render() {
     return (
       <div className="eintrag">
-        <p className="titel">{this.props.info.Titel}</p>
-        <p className="info">Dozent: {this.props.info.Dozent}</p>
-        <p className="info">Zeitraum: {this.props.info.Beginn} - {this.props.info.Ende}</p>
-        <p className="info">Raum: {this.props.info.Raum}</p>
+        <div className="left">
+          <div className="time">
+            {this.props.info.Beginn} <br />-<br /> {this.props.info.Ende}
+          </div>
+        </div>
+        <div className="right">
+          <p className="titel">{this.props.info.Titel}</p>
+          <div className="infos">
+            Dozent: {this.props.info.Dozent} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Raum: {this.props.info.Raum}
+          </div>
+        </div>
       </div>
     );
   }
