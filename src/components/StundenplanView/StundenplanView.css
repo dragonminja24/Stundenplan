@@ -1,3 +1,8 @@
+.face {
+    overflow: hidden;
+}
+
+
 .fade-enter {
     opacity: 0.01;
 }
@@ -16,13 +21,16 @@
     transition: opacity 300ms ease-in;
 }
 
-/*div.transition-group {
+.wrapper {
+    height: 80vh;
+}
+
+ .transition-group {
     position: relative;
 }
 
-section.route-section {
+.route-section {
  position: absolute;
  width: 100%;
- top: 0;
- left: 0;
-}*/
+ height: 100%;
+} 

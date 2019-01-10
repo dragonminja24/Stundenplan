@@ -48,14 +48,13 @@ class StundenplanView extends Component {
 
   render() {
     return (
-      <div>
-        <TransitionGroup>
-          <CSSTransition
+      <div className="wrapper">
+        <TransitionGroup className="transition-group">
+           <CSSTransition
             key={this.props.location.key}
-            timeout={{ enter: 300, exit: 300 }}
-            classNames={"fade"}
-          >
-            <div>
+            timeout={{ enter: 300, exit: 300 }}  classNames={"fade"}>
+          
+            <div className="route-section">
               <Route
                 exact
                 path="/"
@@ -122,6 +121,7 @@ class StundenplanView extends Component {
                 )}
               />
             </div>
+            
           </CSSTransition>
         </TransitionGroup>
       </div>
