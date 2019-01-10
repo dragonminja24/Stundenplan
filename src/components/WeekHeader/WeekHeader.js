@@ -6,10 +6,10 @@ class WeekHeader extends Component {
   render() {
     return (
       <header className="App-header">
-        <Link className="woche" to={this.props.location.pathname.substr(0,3) + "/gKW"}>
+        <Link className={this.props.location.pathname.substr(4,3) === "gKW" ? "active" : "woche"} to={this.props.location.pathname.substr(0,3) + "/gKW"}>
           gKW
         </Link>
-        <Link className="woche" to={this.props.location.pathname.substr(0,3) + "/uKW"}>
+        <Link className={this.props.location.pathname.substr(4,3) === "uKW" ? "active" : "woche"} to={this.props.location.pathname.substr(0,3) + "/uKW"}>
           uKW
         </Link>
       </header>

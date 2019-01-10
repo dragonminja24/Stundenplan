@@ -24,6 +24,24 @@
   height: 100%;
 }
 
+
+.active {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(10px + 4vmin);
+  text-decoration: none;
+  color: inherit;
+  float: left;
+  border: 3px solid blue;
+  box-sizing: border-box;
+  margin: auto;
+  width: 50%;
+  height: 100%;
+}
+
+
 @media(min-width : 768px){
   .App-header{
     width: 50%;
