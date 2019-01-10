@@ -8,14 +8,29 @@ import StundenplanView from "./components/StundenplanView/StundenplanView";
 import WeekHeader from "./components/WeekHeader/WeekHeader";
 
 class App extends Component {
-  state = {
-    showContent: false,
-    sideDrawerOpen: false,
-    width: window.innerWidth,
-    studiengang: "Bachelor Informatik",
-    semester: "Semester-3",
-    gruppe: "4"
-  };
+  constructor(props) {
+    super(props);
+    var saved = JSON.parse(localStorage.getItem("Settings"));
+    if (saved !== null) {
+      this.state = {
+        showContent: false,
+        sideDrawerOpen: false,
+        width: window.innerWidth,
+        studiengang: saved.studiengang,
+        semester: saved.semester,
+        gruppe: saved.gruppe
+      };
+    } else {
+      this.state = {
+        showContent: false,
+        sideDrawerOpen: false,
+        width: window.innerWidth,
+        studiengang: "",
+        semester: "",
+        gruppe: ""
+      };
+    }
+  }
 
   drawerToggleClickHandler = () => {
     this.setState(prevState => {

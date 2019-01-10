@@ -1,14 +1,32 @@
 import React, { Component } from "react";
 import "./SideDrawer.css";
-import Dropdown from "./Dropdown/Dropdown";
+import Firebase from "../Firebase/Firebase";
+
 class sideDrawer extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      studiengang: "Bachelor Informatik",
-      semester: "Semester-3",
-      gruppe: "4"
-    };
+    var saved = JSON.parse(localStorage.getItem("Settings"));
+    if (saved !== null) {
+      this.state = {
+        studiengang: saved.studiengang,
+        semester: saved.semester,
+        gruppe: saved.gruppe,
+        dbData: null,
+        selectStudiengaenge: <option value={saved.studiengang}>{saved.studiengang}</option>,
+        selectSemester: <option value={saved.semester}>{saved.semester}</option>,
+        selectGruppen: <option value={saved.gruppe}>{saved.gruppe}</option>
+      };
+    } else {
+      this.state = {
+        studiengang: "",
+        semester: "",
+        gruppe: "",
+        dbData: null,
+        selectStudiengaenge: null,
+        selectSemester: null,
+        selectGruppen: null
+      };
+    }
 
     this.handleStudiengangChange = this.handleStudiengangChange.bind(this);
     this.handleSemesterChange = this.handleSemesterChange.bind(this);
@@ -16,12 +34,79 @@ class sideDrawer extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillMount() {
+    let messagesRef = Firebase.database().ref("Uebersicht");
+    messagesRef.once("value", snapshot => {
+      this.setState({ dbData: snapshot.val() });
+
+      var data = this.state.dbData;
+      var studiengaenge = null;
+      var semester = null;
+      var gruppen = null;
+      if (data != null) {
+        studiengaenge = Object.keys(data).map(function(key, index) {
+          return (
+            <option value={key} key={index}>
+              {key}
+            </option>
+          );
+        });
+        if (this.state.studiengang !== "") {
+          data = data[this.state.studiengang];
+          semester = Object.keys(data).map(function(key, index) {
+            return (
+              <option value={key} key={index}>
+                {key}
+              </option>
+            );
+          });
+          if (this.state.semester !== "") {
+            data = data[this.state.semester];
+            gruppen = Object.keys(data).map(function(key, index) {
+              return (
+                <option value={data[key]} key={index}>
+                  {data[key]}
+                </option>
+              );
+            });
+          }
+        }
+      }
+
+      this.setState({
+        selectStudiengaenge: studiengaenge,
+        selectSemester: semester,
+        selectGruppen: gruppen
+      });
+    });
+  }
+
   handleStudiengangChange(event) {
     this.setState({ studiengang: event.target.value });
+
+    var data = this.state.dbData[event.target.value];
+    var semester = Object.keys(data).map(function(key, index) {
+      return (
+        <option value={key} key={index}>
+          {key}
+        </option>
+      );
+    });
+    this.setState({ selectSemester: semester, selectGruppen: null });
   }
 
   handleSemesterChange(event) {
     this.setState({ semester: event.target.value });
+
+    var data = this.state.dbData[this.state.studiengang][event.target.value];
+    var gruppen = Object.keys(data).map(function(key, index) {
+      return (
+        <option value={data[key]} key={index}>
+          {data[key]}
+        </option>
+      );
+    });
+    this.setState({ selectGruppen: gruppen });
   }
 
   handleGruppeChange(event) {
@@ -30,6 +115,7 @@ class sideDrawer extends Component {
 
   handleSubmit(event) {
     this.props.changeSettings(this.state);
+    localStorage.setItem("Settings", JSON.stringify(this.state));
     event.preventDefault();
   }
 
@@ -39,6 +125,7 @@ class sideDrawer extends Component {
     } else {
       this.drawerClasses = "side-drawer";
     }
+
     return (
       <div className={this.drawerClasses}>
         <form onSubmit={this.handleSubmit}>
@@ -49,14 +136,10 @@ class sideDrawer extends Component {
                 value={this.state.studiengang}
                 onChange={this.handleStudiengangChange}
               >
-                <option value="Bachelor Informatik">Bachelor Informatik</option>
-                <option value="Bachelor Wirtschaftsinformatik">
-                  Bachelor Wirtschaftsinformatik
+                <option value="" disabled>
+                  Select your option
                 </option>
-                <option value="Master Autonomous Systems">
-                  Master Autonomous Systems
-                </option>
-                <option value="Master CSN">Master CSN</option>
+                {this.state.selectStudiengaenge}
               </select>
             </div>
           </label>
@@ -69,9 +152,10 @@ class sideDrawer extends Component {
                 value={this.state.semester}
                 onChange={this.handleSemesterChange}
               >
-                <option value="Semester-1">Semester-1</option>
-                <option value="Semester-3">Semester-3</option>
-                <option value="Semester-5">Semester-5</option>
+                <option value="" disabled>
+                  Select your option
+                </option>
+                {this.state.selectSemester}
               </select>
             </div>
           </label>
@@ -84,10 +168,10 @@ class sideDrawer extends Component {
                 value={this.state.gruppe}
                 onChange={this.handleGruppeChange}
               >
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
+                <option value="" disabled>
+                  Select your option
+                </option>
+                {this.state.selectGruppen}
               </select>
             </div>
           </label>

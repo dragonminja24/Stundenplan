@@ -14,8 +14,8 @@ class Tag extends Component {
   };
 
   componentWillMount() {
-        this.setState({ loading: true });
-   
+    this.setState({ loading: true });
+
     var saved = JSON.parse(localStorage.getItem(this.props.tag));
     if (
       saved != null &&
@@ -41,7 +41,6 @@ class Tag extends Component {
         }
       });
     }
-    
   }
 
   componentWillReceiveProps(nextProps) {
@@ -58,8 +57,8 @@ class Tag extends Component {
     } else {
       let messagesRef = Firebase.database().ref(
         "Studiengaenge/" +
-        nextProps.studiengang +
-          "/" +
+          nextProps.studiengang +
+          "/Semester-" +
           nextProps.semester +
           "/" +
           nextProps.tag
