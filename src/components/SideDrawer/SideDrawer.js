@@ -4,76 +4,34 @@ import Dropdown from "./Dropdown/Dropdown";
 class sideDrawer extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      studiengang: "Bachelor Informatik",
+      semester: "Semester-3",
+      gruppe: "4"
+    };
+
+    this.handleStudiengangChange = this.handleStudiengangChange.bind(this);
+    this.handleSemesterChange = this.handleSemesterChange.bind(this);
+    this.handleGruppeChange = this.handleGruppeChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  /*
-  let contentClasses = "dropdown-content";
-  let e1 = "el";
-  let e2 = "el";
-  let e3 = "el";
-  let e4 = "el";
-  let tmp = "";
-*/
-
-  /*
-  if (props.data.showContent) {
-    e1 = "el";
-    e2 = "el";
-    e3 = "el";
-    e4 = "el";
-
-    switch (props.data.studiengang) {
-      case "Bachelor Informatik":
-        tmp = "Bachelor Informatik";
-        e1 = "el hide";
-        break;
-      case "Bachelor Wirtschaftsinformatik":
-        tmp = "Bachelor Wirtschaftsinformatik";
-        e2 = "el hide";
-        break;
-      case "Master Autonomous Systems":
-        tmp = "Master Autonomous Systems";
-        e3 = "el hide";
-        break;
-      case "Master CSN":
-        tmp = "Master CSN";
-        e4 = "el hide";
-        break;
-      default:
-        break;
-    }
-
-    contentClasses = "dropdown-content show";
+  handleStudiengangChange(event) {
+    this.setState({ studiengang: event.target.value });
   }
 
-  return (
-    <div className={drawerClasses}>
-      <button onClick={props.contentClickHandler} className="dropbtn">
-        {props.data.studiengang}
-      </button>
-      <div className={contentClasses}>
-        <p onClick={tmp => props.changeStudiengang.bind(tmp)} className={e1}>
-          Bachelor Informatik{" "}
-        </p>
-      </div>
-      <div className={contentClasses}>
-        <p onClick={tmp => props.changeStudiengang.bind(tmp)} className={e2}>
-          Bachelor Wirtschaftsinformatik
-        </p>
-      </div>
-      <div className={contentClasses}>
-        <p onClick={tmp => props.changeStudiengang.bind(tmp)} className={e3}>
-          Master Autonomous Systems
-        </p>
-      </div>
-      <div className={contentClasses}>
-        <p onClick={tmp => props.changeStudiengang.bind(tmp)} className={e4}>
-          Master CSN
-        </p>
-      </div>
-    </div>
-  );
-  */
+  handleSemesterChange(event) {
+    this.setState({ semester: event.target.value });
+  }
+
+  handleGruppeChange(event) {
+    this.setState({ gruppe: event.target.value });
+  }
+
+  handleSubmit(event) {
+    this.props.changeSettings(this.state);
+    event.preventDefault();
+  }
 
   render() {
     if (this.props.data.sideDrawerOpen) {
@@ -83,7 +41,61 @@ class sideDrawer extends Component {
     }
     return (
       <div className={this.drawerClasses}>
-        <Dropdown changeStudiengang={this.props.changeStudiengang}/>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Studiengang:
+            <div className="select-wrapper">
+              <select
+                value={this.state.studiengang}
+                onChange={this.handleStudiengangChange}
+              >
+                <option value="Bachelor Informatik">Bachelor Informatik</option>
+                <option value="Bachelor Wirtschaftsinformatik">
+                  Bachelor Wirtschaftsinformatik
+                </option>
+                <option value="Master Autonomous Systems">
+                  Master Autonomous Systems
+                </option>
+                <option value="Master CSN">Master CSN</option>
+              </select>
+            </div>
+          </label>
+          <br />
+
+          <label>
+            Semester:
+            <div className="select-wrapper">
+              <select
+                value={this.state.semester}
+                onChange={this.handleSemesterChange}
+              >
+                <option value="Semester-1">Semester-1</option>
+                <option value="Semester-3">Semester-3</option>
+                <option value="Semester-5">Semester-5</option>
+              </select>
+            </div>
+          </label>
+          <br />
+
+          <label>
+            Gruppe:
+            <div className="select-wrapper">
+              <select
+                value={this.state.gruppe}
+                onChange={this.handleGruppeChange}
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+          </label>
+          <br />
+          <br />
+
+          <input type="submit" value="Submit" />
+        </form>
       </div>
     );
   }

@@ -9,7 +9,7 @@ import WeekHeader from "./components/WeekHeader/WeekHeader";
 
 class App extends Component {
   state = {
-    showContent : false,
+    showContent: false,
     sideDrawerOpen: false,
     width: window.innerWidth,
     studiengang: "Bachelor Informatik",
@@ -22,15 +22,19 @@ class App extends Component {
       return { sideDrawerOpen: !prevState.sideDrawerOpen };
     });
   };
-  
+
   sideDrawerContentHandler = () => {
     this.setState(prevState => {
       return { showContent: !prevState.showContent };
     });
   };
 
-  changeStudiengang = (props) => {
-    this.setState({ studiengang : props});
+  changeSettings = props => {
+    this.setState({
+      studiengang: props.studiengang,
+      semester: props.semester,
+      gruppe: props.gruppe
+    });
   };
 
   backdropClickHandler = () => {
@@ -38,21 +42,27 @@ class App extends Component {
   };
 
   render() {
-   
     let backdrop;
     if (this.state.sideDrawerOpen) {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
-    
+
     return (
       <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
         <div style={{ height: "100%" }}>
           <WeekHeader />
           <StundenplanView data={this.state} />
-       
+
           <FooterNavigation />
-         <Drawer show={this.state.sideDrawerOpen} drawerClickHandler={this.drawerToggleClickHandler} />
-         <SideDrawer data={this.state} changeStudiengang={this.changeStudiengang} contentClickHandler={this.sideDrawerContentHandler} />
+          <Drawer
+            show={this.state.sideDrawerOpen}
+            drawerClickHandler={this.drawerToggleClickHandler}
+          />
+          <SideDrawer
+            data={this.state}
+            changeSettings={this.changeSettings}
+            contentClickHandler={this.sideDrawerContentHandler}
+          />
           {backdrop}
         </div>
       </BrowserRouter>

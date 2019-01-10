@@ -14,7 +14,7 @@ class Tag extends Component {
   };
 
   componentWillMount() {
-    this.setState({ loading: true });
+        this.setState({ loading: true });
    
     var saved = JSON.parse(localStorage.getItem(this.props.tag));
     if (
@@ -41,9 +41,46 @@ class Tag extends Component {
         }
       });
     }
+    
   }
 
-  componentDidMount() {
+  componentWillReceiveProps(nextProps) {
+    this.setState({ loading: true });
+
+    var saved = JSON.parse(localStorage.getItem(nextProps.tag));
+    if (
+      saved != null &&
+      saved.studiengang === nextProps.studiengang &&
+      saved.semester === nextProps.semester
+    ) {
+      this.setState(saved);
+      this.setState({ loading: false });
+    } else {
+      let messagesRef = Firebase.database().ref(
+        "Studiengaenge/" +
+        nextProps.studiengang +
+          "/" +
+          nextProps.semester +
+          "/" +
+          nextProps.tag
+      );
+
+      messagesRef.once("value", snapshot => {
+        this.setState({ dbData: snapshot.val() });
+        this.setState({ loading: false });
+        if (this.state.dbData != null) {
+          localStorage.setItem(nextProps.tag, JSON.stringify(this.state));
+        }
+      });
+    }
+
+    this.setState({
+      studiengang: nextProps.studiengang,
+      semester: nextProps.semester,
+      gruppe: nextProps.gruppe,
+      tag: nextProps.tag
+    });
+
     window.scrollTo(0, 0);
   }
 
