@@ -102,7 +102,8 @@ class Tag extends Component {
           var current = data[key];
           if (
             (current.Woche !== 0 && woche !== current.Woche) ||
-            (current.Gruppe !== 0 && gruppe !== current.Gruppe)
+            (current.Gruppe.indexOf("0") === -1 &&
+              current.Gruppe.indexOf(gruppe) === -1)
           ) {
             return null;
           } else {
