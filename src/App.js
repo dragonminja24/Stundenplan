@@ -63,8 +63,8 @@ class App extends Component {
     }
 
     return (
-      <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
-        <div style={{ height: "100%" }}>
+      <BrowserRouter>
+        <div style={{ height: "100vh" }}>
           <WeekHeader />
           <StundenplanView data={this.state} />
 

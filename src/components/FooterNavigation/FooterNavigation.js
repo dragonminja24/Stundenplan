@@ -6,7 +6,6 @@ class FooterNavigation extends Component {
   render() {
     return (
       <footer className="App-footer">
-        <div className="App-footer-two">
         <Link className={this.props.location.pathname.substr(1,2) === "MO" ? "aktueller-tag" : "tag"} to={"/MO"+this.props.location.pathname.substr(3,4)}>
             MO
           </Link>
@@ -22,7 +21,6 @@ class FooterNavigation extends Component {
           <Link className={this.props.location.pathname.substr(1,2) === "FR" ? "aktueller-tag" : "tag"} to={"/FR"+this.props.location.pathname.substr(3,4)}>
             FR
           </Link>
-        </div>
       </footer>
     );
   }

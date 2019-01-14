@@ -1,11 +1,13 @@
 .App-header {
   width: 100%;
-  background: #eee;
+  background: rgb(255, 255, 255);
   display: flex;
   position: sticky;
-  bottom: 0rem;
-  align-self: flex-end;
-  height: 10vh;
+  top: 0rem;
+  align-self: flex-start;
+  z-index: 1;
+  height: 9vh;
+  border-bottom: 1vh solid rgb(220, 220, 220);
 }
 
 .woche {
@@ -17,7 +19,6 @@
   text-decoration: none;
   color: inherit;
   float: left;
-  border: 1px solid grey;
   box-sizing: border-box;
   margin: auto;
   width: 50%;
@@ -34,7 +35,7 @@
   text-decoration: none;
   color: inherit;
   float: left;
-  border: 3px solid blue;
+  border-bottom: 5px solid blue;
   box-sizing: border-box;
   margin: auto;
   width: 50%;

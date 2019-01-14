@@ -1,21 +1,10 @@
 .App-footer {
   width: 100%;
-  background: #eee;
+  background: rgb(255,255,255);
   display: flex;
-  position: sticky;
-  bottom: 0rem;
-  align-self: flex-end;
-  height: 10vh;
-}
-
-.App-footer-two{
-  width: 100%;
-  background: #eee;
-  display: flex;
-  position: sticky;
-  bottom: 0rem;
-  align-self: flex-end;
-  height: 10vh;
+  height: 9vh;
+  top: 100vh;
+  border-top: 1vh solid rgb(220, 220, 220);
 }
 
 .tag {
@@ -27,7 +16,6 @@
   text-decoration: none;
   color: inherit;
   float: left;
-  border: 1px solid grey;
   box-sizing: border-box;
   margin: auto;
   width: 100%;
@@ -44,7 +32,7 @@
   text-decoration: none;
   color: inherit;
   float: left;
-  border: 3px solid blue;
+  border-bottom: 5px solid blue;
   box-sizing: border-box;
   margin: auto;
   width: 100%;

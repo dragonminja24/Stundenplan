@@ -1,36 +1,37 @@
-.face {
-    overflow: hidden;
-}
-
-
 .fade-enter {
-    opacity: 0.01;
+  opacity: 0.01;
 }
 
 .fade-enter.fade-enter-active {
-    opacity: 1;
-    transition: opacity 300ms ease-in;
+  opacity: 1;
+  transition: opacity 300ms ease-in;
 }
 
 .fade-exit {
-    opacity: 1;
+  opacity: 1;
 }
 
 .fade-exit.fade-exit-active {
-    opacity: 0.01;
-    transition: opacity 300ms ease-in;
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }
 
 .wrapper {
-    height: 80vh;
+  height: 80%;
+  overflow: hidden;
 }
 
- .transition-group {
-    position: relative;
+.transition-group {
+  position: absolute;
+  top: 10vh;
+  right: 0;
+  bottom: 10vh;
+  left: 0;
+  overflow: hidden;
 }
 
 .route-section {
- position: absolute;
- width: 100%;
- height: 100%;
-} 
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}

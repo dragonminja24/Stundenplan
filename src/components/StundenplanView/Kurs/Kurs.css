@@ -3,7 +3,7 @@
   border: 1px solid grey;
   box-sizing: border-box;
   width: 100%;
-  min-height: 15vh;
+  min-height: 20vh;
 
   overflow: auto;
   position: relative;
@@ -11,7 +11,7 @@
 }
 
 .titel {
-  font-size: calc(10px + 1.4vmin);
+  font-size: calc(10px + 2.5vmin);
 }
 
 .infos {
