@@ -137,7 +137,7 @@ class sideDrawer extends Component {
                 onChange={this.handleStudiengangChange}
               >
                 <option value="" disabled>
-                  Select your option
+                  Wähle deinen Studiengang...
                 </option>
                 {this.state.selectStudiengaenge}
               </select>
@@ -153,7 +153,7 @@ class sideDrawer extends Component {
                 onChange={this.handleSemesterChange}
               >
                 <option value="" disabled>
-                  Select your option
+                  Wähle dein Semester...
                 </option>
                 {this.state.selectSemester}
               </select>
@@ -169,7 +169,7 @@ class sideDrawer extends Component {
                 onChange={this.handleGruppeChange}
               >
                 <option value="" disabled>
-                  Select your option
+                  Wähle deine Gruppe...
                 </option>
                 {this.state.selectGruppen}
               </select>
