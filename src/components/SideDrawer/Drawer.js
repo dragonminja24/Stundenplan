@@ -1,23 +1,24 @@
-import React from 'react';
+import React from "react";
 
-import './Drawer.css';
+import "./Drawer.css";
 
-const drawer = props => {
+const Drawer = props => {
+  let drawerClasses = "navigator";
+  if (props.show) {
+    drawerClasses = "navigator-open";
+  }
 
-  let drawerClasses = 'navigator';
-    if(props.show) {
-      drawerClasses = 'navigator-open';
-    }
- 
+  return (
+    <div className={drawerClasses}>
+      <button className="toggle-button" onClick={props.drawerClickHandler}>
+        <div className="button-lines">
+          <div className="toggle-button_line" />
+          <div className="toggle-button_line" />
+          <div className="toggle-button_line" />
+        </div>
+      </button>
+    </div>
+  );
+};
 
-  return(
-  <div className={drawerClasses}>
-    <button className="toggle-button" onClick={props.drawerClickHandler}>
-      <div className="toggle-button_line" />
-      <div className="toggle-button_line" />
-      <div className="toggle-button_line" />
-    </button>
-  </div>
-  )};
-
-export default drawer;
+export default Drawer;

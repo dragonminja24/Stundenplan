@@ -10,6 +10,17 @@
 
 }
 
+.eintrag-aktiv {
+  text-align: center;
+  border: 1px solid grey;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 20vh;
+  overflow: auto;
+  position: relative;
+  background-color: skyblue; 
+}
+
 .titel {
   font-size: calc(10px + 2.5vmin);
 }

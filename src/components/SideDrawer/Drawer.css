@@ -1,43 +1,53 @@
-.toggle-button{
-  display : flex;
+.toggle-button {
+  cursor: pointer;
+  width: 15vw;
+  height: 15vw;
+  background-color: rgb(40, 108, 255);
+  border-radius: 50%;
+}
+
+.button-lines {
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height:  24px;
-  width: 30px;
+  height: 7vw;
+  width: 10vw;
   background: transparent;
-  border : none;
-  cursor: pointer;
+  border: none;
   padding: 0;
   box-sizing: border-box;
+
+  position: absolute;
+  top: 25%;
+  left: 25%;
 }
 
-.toggle-button_line{
-  width: 30px;
-  height: 4px;
-  background: black;
+.toggle-button_line {
+  width: 8vw;
+  height: 1vw;
+  background: rgb(255, 255, 255);
 }
 
-
-.navigator{
-  position : fixed;
-  top: 80%;
-  right: 0%;
+.navigator {
+  position: fixed;
+  top: 70vh;
+  right: 9vw;
   transition: ease-in 0.25s;
 }
 
-.navigator-open{
+.navigator-open {
   position: fixed;
-  top:80%;
-  right:75%;
+  top: 70vh;
+  right: 75%;
   transition: ease-out 0.4s;
 }
 
-.navigator-desktop{
+.navigator-desktop {
   visibility: hidden;
 }
 
-@media (min-width: 768px){
-  .navigator{
+@media (min-width: 768px) {
+  .navigator {
     display: none;
   }
 }

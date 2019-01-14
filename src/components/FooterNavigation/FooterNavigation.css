@@ -2,8 +2,10 @@
   width: 100%;
   background: rgb(255,255,255);
   display: flex;
+  position: sticky;
+  align-self: flex-end;
+  bottom: 0rem;
   height: 9vh;
-  top: 100vh;
   border-top: 1vh solid rgb(220, 220, 220);
 }
 
@@ -32,7 +34,7 @@
   text-decoration: none;
   color: inherit;
   float: left;
-  border-bottom: 5px solid blue;
+  border-bottom: 8px solid blue;
   box-sizing: border-box;
   margin: auto;
   width: 100%;

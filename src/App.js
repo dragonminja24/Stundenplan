@@ -64,7 +64,7 @@ class App extends Component {
 
     return (
       <BrowserRouter>
-        <div style={{ height: "100vh" }}>
+        <div style={{ minheight: "100vh" }}>
           <WeekHeader />
           <StundenplanView data={this.state} />
 
