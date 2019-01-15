@@ -15,7 +15,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: calc(10px + 4vmin);
+  font-size: calc(10px + 5vmin);
+  font-weight: bold;
   text-decoration: none;
   color: inherit;
   float: left;
@@ -31,11 +32,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: calc(10px + 4vmin);
+  font-size: calc(10px + 5vmin);
+  font-weight: bold;
   text-decoration: none;
   color: inherit;
   float: left;
-  border-bottom: 5px solid blue;
+  border-bottom: 8px solid blue;
+  padding-top: 5px;
   box-sizing: border-box;
   margin: auto;
   width: 50%;
