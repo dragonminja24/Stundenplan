@@ -168,8 +168,8 @@ class sideDrawer extends Component {
                 value={this.state.gruppe}
                 onChange={this.handleGruppeChange}
               >
-                <option value="" disabled>
-                  Wähle deine Gruppe...
+                <option value="alle">
+                  Wähle deine Gruppe... (optional)
                 </option>
                 {this.state.selectGruppen}
               </select>

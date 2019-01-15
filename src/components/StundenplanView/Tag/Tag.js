@@ -101,13 +101,14 @@ class Tag extends Component {
         const Kurse = Object.keys(data).map(function(key, index) {
           var current = data[key];
           if (
-            (current.Woche !== 0 && woche !== current.Woche) ||
-            (current.Gruppe.indexOf("0") === -1 &&
-              current.Gruppe.indexOf(gruppe) === -1)
+            (current.Woche === 0 || woche === current.Woche) &&
+            (gruppe === "alle" ||
+              current.Gruppe.indexOf("0") !== -1 ||
+              current.Gruppe.indexOf(gruppe) !== -1)
           ) {
-            return null;
-          } else {
             return <Kurs info={current} key={key} />;
+          } else {
+            return null;
           }
         });
         return <div className="main">{Kurse}</div>;
