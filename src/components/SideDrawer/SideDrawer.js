@@ -128,15 +128,16 @@ class sideDrawer extends Component {
 
     return (
       <div className={this.drawerClasses}>
-        <form onSubmit={this.handleSubmit}>
-          <label>
+      <p className="settings">Einstellungen</p>
+        <form onSubmit={this.handleSubmit} className="form">
+          <label className="label">
             Studiengang:
             <div className="select-wrapper">
               <select
                 value={this.state.studiengang}
                 onChange={this.handleStudiengangChange}
               >
-                <option value="" disabled>
+                <option value="">
                   Wähle deinen Studiengang...
                 </option>
                 {this.state.selectStudiengaenge}
@@ -152,7 +153,7 @@ class sideDrawer extends Component {
                 value={this.state.semester}
                 onChange={this.handleSemesterChange}
               >
-                <option value="" disabled>
+                <option value="">
                   Wähle dein Semester...
                 </option>
                 {this.state.selectSemester}
