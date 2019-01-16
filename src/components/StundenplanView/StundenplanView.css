@@ -17,6 +17,7 @@
 }
 
 .wrapper {
+  background-color: rgb(13, 178, 219);
   height: 80vh;
   overflow: hidden;
 }

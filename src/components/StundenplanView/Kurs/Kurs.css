@@ -4,7 +4,7 @@
   box-sizing: border-box;
   width: 100%;
   min-height: 20vh;
-
+  background-color: rgb(13, 178, 219);
   overflow: auto;
   position: relative;
 

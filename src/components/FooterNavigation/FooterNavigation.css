@@ -1,12 +1,12 @@
 .App-footer {
   width: 100%;
-  background: rgb(255,255,255);
   display: flex;
   position: sticky;
   align-self: flex-end;
   bottom: 0rem;
   height: 9vh;
-  border-top: 1vh solid rgb(220, 220, 220);
+  border-top: 1vh solid rgb(60, 120, 177);
+  background-color: rgb(13, 178, 219);
 }
 
 .tag {
@@ -27,6 +27,7 @@
 
 
 .aktueller-tag {
+  background-color: rgb(60, 120, 177);
   text-align: center;
   display: flex;
   justify-content: center;
@@ -36,7 +37,6 @@
   text-decoration: none;
   color: inherit;
   float: left;
-  border-bottom: 8px solid rgb(40, 105, 255);
   padding-top: 8px;
   box-sizing: border-box;
   margin: auto;

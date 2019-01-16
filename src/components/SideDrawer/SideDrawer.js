@@ -7,6 +7,7 @@ class sideDrawer extends Component {
     super(props);
     var saved = JSON.parse(localStorage.getItem("Settings"));
     if (saved !== null) {
+      if(saved.studiengang != "Wähle deinen Studiengang..."){
       this.state = {
         studiengang: saved.studiengang,
         semester: saved.semester,
@@ -16,6 +17,7 @@ class sideDrawer extends Component {
         selectSemester: <option value={saved.semester}>{saved.semester}</option>,
         selectGruppen: <option value={saved.gruppe}>{saved.gruppe}</option>
       };
+    }
     } else {
       this.state = {
         studiengang: "",
@@ -137,7 +139,7 @@ class sideDrawer extends Component {
                 value={this.state.studiengang}
                 onChange={this.handleStudiengangChange}
               >
-                <option value="">
+                <option disabled selected value="">
                   Wähle deinen Studiengang...
                 </option>
                 {this.state.selectStudiengaenge}
@@ -153,7 +155,7 @@ class sideDrawer extends Component {
                 value={this.state.semester}
                 onChange={this.handleSemesterChange}
               >
-                <option value="">
+                <option disabled selected value="">
                   Wähle dein Semester...
                 </option>
                 {this.state.selectSemester}
@@ -169,7 +171,7 @@ class sideDrawer extends Component {
                 value={this.state.gruppe}
                 onChange={this.handleGruppeChange}
               >
-                <option value="alle">
+                <option disabled selected value="">
                   Wähle deine Gruppe... (optional)
                 </option>
                 {this.state.selectGruppen}
