@@ -13,7 +13,6 @@ class App extends Component {
     var saved = JSON.parse(localStorage.getItem("Settings"));
     if (saved !== null) {
       this.state = {
-        showContent: false,
         sideDrawerOpen: false,
         width: window.innerWidth,
         studiengang: saved.studiengang,
@@ -22,8 +21,7 @@ class App extends Component {
       };
     } else {
       this.state = {
-        showContent: false,
-        sideDrawerOpen: false,
+        sideDrawerOpen: true,
         width: window.innerWidth,
         studiengang: "",
         semester: "",
@@ -35,12 +33,6 @@ class App extends Component {
   drawerToggleClickHandler = () => {
     this.setState(prevState => {
       return { sideDrawerOpen: !prevState.sideDrawerOpen };
-    });
-  };
-
-  sideDrawerContentHandler = () => {
-    this.setState(prevState => {
-      return { showContent: !prevState.showContent };
     });
   };
 
@@ -73,11 +65,7 @@ class App extends Component {
             show={this.state.sideDrawerOpen}
             drawerClickHandler={this.drawerToggleClickHandler}
           />
-          <SideDrawer
-            data={this.state}
-            changeSettings={this.changeSettings}
-            contentClickHandler={this.sideDrawerContentHandler}
-          />
+          <SideDrawer data={this.state} changeSettings={this.changeSettings} />
           {backdrop}
         </div>
       </BrowserRouter>
