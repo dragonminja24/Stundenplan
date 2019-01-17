@@ -124,6 +124,8 @@ class sideDrawer extends Component {
   }
 
   render() {
+
+
     if (this.props.data.sideDrawerOpen) {
       this.drawerClasses = "side-drawer open";
     } else {
@@ -173,7 +175,7 @@ class sideDrawer extends Component {
                 value={this.state.gruppe}
                 onChange={this.handleGruppeChange}
               >
-                <option disabled selected value="">
+                <option  value="alle">
                   Wähle deine Gruppe... (optional)
                 </option>
                 {this.state.selectGruppen}
@@ -183,7 +185,7 @@ class sideDrawer extends Component {
           <br />
           <br />
 
-          <input type="submit" value="Submit" />
+          <input onClick={this.props.drawerClickHandler} type="submit" value="Speichern" />
         </form>
       </div>
     );
