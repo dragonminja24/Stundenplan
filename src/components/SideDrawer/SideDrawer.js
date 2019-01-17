@@ -24,7 +24,7 @@ class sideDrawer extends Component {
       this.state = {
         studiengang: "",
         semester: "",
-        gruppe: "",
+        gruppe: "alle",
         dbData: null,
         selectStudiengaenge: null,
         selectSemester: null,
