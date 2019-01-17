@@ -51,4 +51,7 @@
   .navigator {
     display: none;
   }
+  .navigator-open {
+    display: none;
+  }
 }
