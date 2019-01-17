@@ -2,7 +2,7 @@
   cursor: pointer;
   width: 15vw;
   height: 15vw;
-  background-color: rgb(60, 120, 177);
+  background-color: rgba(60, 120, 177, 0.514);
   border-radius: 50%;
   outline : 0;
 }
@@ -11,13 +11,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 7vw;
+  height: 8vw;
   width: 10vw;
   background: transparent;
   border: none;
   padding: 0;
   box-sizing: border-box;
-
   position: absolute;
   top: 25%;
   left: 25%;
@@ -25,8 +24,8 @@
 
 .toggle-button_line {
   width: 8vw;
-  height: 1vw;
-  background: rgb(255, 255, 255);
+  height: 1vh;
+  background: rgba(255, 255, 255, 0.623);
 }
 
 .navigator {
