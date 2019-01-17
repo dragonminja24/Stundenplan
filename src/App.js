@@ -15,7 +15,6 @@ class App extends Component {
       this.state = {
         showContent: false,
         sideDrawerOpen: false,
-        width: window.innerWidth,
         studiengang: saved.studiengang,
         semester: saved.semester,
         gruppe: saved.gruppe
@@ -24,7 +23,6 @@ class App extends Component {
       this.state = {
         showContent: false,
         sideDrawerOpen: false,
-        width: window.innerWidth,
         studiengang: "",
         semester: "",
         gruppe: ""
@@ -61,7 +59,6 @@ class App extends Component {
     if (this.state.sideDrawerOpen) {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
-
     return (
       <BrowserRouter>
         <div style={{ minheight: "100vh" }}>
@@ -76,7 +73,7 @@ class App extends Component {
           <SideDrawer
             data={this.state}
             changeSettings={this.changeSettings}
-            contentClickHandler={this.sideDrawerContentHandler}
+            drawerClickHandler={this.drawerToggleClickHandler}
           />
           {backdrop}
         </div>
