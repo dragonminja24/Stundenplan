@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React /*, { Component } */ from "react";
 import "./Kurs.css";
 
-class Kurs extends Component {
-  /* Kann genutzt werden um Kurs zur aktuellen Uhrzeit zu erkennen, überprüfung auf Wochentag und Woche fehlt noch
+//class Kurs extends Component {
+/* Kann genutzt werden um Kurs zur aktuellen Uhrzeit zu erkennen, überprüfung auf Wochentag und Woche fehlt noch
   aktuell(){
     var start = this.props.info.Beginn.split(":");
     var end = this.props.info.Ende.split(":");
@@ -25,28 +25,31 @@ class Kurs extends Component {
   }
 */
 
-  render() {
-    return (
-      /*
+//  render() {
+
+const Kurs = props => {
+  return (
+    /*
       <div className={this.aktuell() ? "eintrag-aktiv" : "eintrag"}>
       */
-     <div className="eintrag">
-        <div className="left">
-          <div className="time">
-            {this.props.info.Beginn} <br />-<br /> {this.props.info.Ende}
-          </div>
-        </div>
-        <div className="right">
-          <p className="titel">{this.props.info.Titel}</p>
-          <div className="infos">
-            Dozent: {this.props.info.Dozent}{" "}
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Raum:{" "}
-            {this.props.info.Raum}
-          </div>
+    <div className="eintrag">
+      <div className="left">
+        <div className="time">
+          {props.info.Beginn} <br />-<br /> {props.info.Ende}
         </div>
       </div>
-    );
-  }
-}
+      <div className="right">
+        <p className="titel">{props.info.Titel}</p>
+        <div className="infos">
+          Dozent: {props.info.Dozent}{" "}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Raum:{" "}
+          {props.info.Raum}
+        </div>
+      </div>
+    </div>
+  );
+};
+//  }
+//}
 
 export default Kurs;
